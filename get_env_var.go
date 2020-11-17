@@ -1,12 +1,9 @@
 package env
 
-import (
-	"fmt"
-	"log"
-)
+import "log"
 
 // GetEnvVar get the environment variables for the user
-func GetEnvVar(key string, options Options) (string, error) {
+func GetEnvVar(key string, options Options) string {
 	envVariables, err := initializeEnv()
 
 	if err != nil {
@@ -28,8 +25,8 @@ func GetEnvVar(key string, options Options) (string, error) {
 	}
 
 	if !options.Optional && value == "" {
-		return "", fmt.Errorf("%s is not defined in .env", key)
+		log.Fatalf("%s is not defined in .env", key)
 	}
 
-	return value, nil
+	return value
 }
