@@ -10,9 +10,12 @@ var err error
 var isFetched bool = false
 
 func initializeEnv() (map[string]string, error) {
+	var envVariables map[string]string
+	var err error
+
 	if !isFetched {
-		log.Println("Fetching variables from .env file")
-		myEnv, err = godotenv.Read()
+		log.Println("Fetching variables from .env file for the first time.")
+		envVariables, err = godotenv.Read()
 
 		if err != nil {
 			return nil, err
@@ -21,5 +24,5 @@ func initializeEnv() (map[string]string, error) {
 		isFetched = true
 	}
 
-	return myEnv, err
+	return envVariables, err
 }
