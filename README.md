@@ -1,5 +1,7 @@
 # Go-Env-Utils
 
+A Go (golang) port of the node [env-utils](https://github.com/danethurber/env-utils) project.
+
 Easily Get Environment Variables
 
 ## Install
