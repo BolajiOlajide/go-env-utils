@@ -17,7 +17,7 @@ go get github.com/BolajiOlajide/go-env-utils
 gets an environment variable
 
 ```go
-import "github.com/BolajiOlajide/go-env-utils/env"
+import "github.com/BolajiOlajide/go-env-utils"
 
 PORT := env.GetEnvVar("PORT", nil)
 ```
