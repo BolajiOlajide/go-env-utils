@@ -9,8 +9,8 @@ var isFetched bool = false
 
 func initializeEnv() error {
 	if !isFetched {
-		err := godotenv.Load()
 		log.Println("Fetching variables from .env file for the first time.")
+		err := godotenv.Load()
 
 		if err != nil {
 			return err
