@@ -19,6 +19,8 @@ gets an environment variable
 ```go
 import "github.com/BolajiOlajide/go-env-utils"
 
+// load .env file and fail silently if it doesn't exist
+_ := env.InitializeEnv()
 PORT := env.GetEnvVar("PORT", nil)
 ```
 
