@@ -13,11 +13,12 @@ func InitializeEnv() error {
 		log.Println("Fetching variables from .env file for the first time.")
 		err := godotenv.Load()
 
+		isFetched = true
+
 		if err != nil {
+			log.Printf("%s", err)
 			return err
 		}
-
-		isFetched = true
 	}
 
 	return nil
