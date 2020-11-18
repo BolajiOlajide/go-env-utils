@@ -1,16 +1,19 @@
 package env
 
-import "log"
+import (
+	"log"
+	"os"
+)
 
 // GetEnvVar get the environment variables for the user
 func GetEnvVar(key string, options Options) string {
-	envVariables, err := initializeEnv()
+	err := initializeEnv()
 
 	if err != nil {
 		log.Fatalf("An error occurred loading the .env file. \n%s\n", err)
 	}
 
-	environment := envVariables["ENVIRONMENT"]
+	environment := os.Getenv("ENVIRONMENT")
 
 	var fallback string
 
@@ -18,7 +21,7 @@ func GetEnvVar(key string, options Options) string {
 		fallback = options.DevDefault
 	}
 
-	value := envVariables[key]
+	value := os.Getenv(key)
 
 	if value == "" {
 		value = fallback

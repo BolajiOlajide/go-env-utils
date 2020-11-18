@@ -5,21 +5,19 @@ import (
 	"log"
 )
 
-var envVariables map[string]string
-var err error
 var isFetched bool = false
 
-func initializeEnv() (map[string]string, error) {
+func initializeEnv() error {
 	if !isFetched {
+		err := godotenv.Load()
 		log.Println("Fetching variables from .env file for the first time.")
-		envVariables, err = godotenv.Read()
 
 		if err != nil {
-			return nil, err
+			return err
 		}
 
 		isFetched = true
 	}
 
-	return envVariables, err
+	return nil
 }
