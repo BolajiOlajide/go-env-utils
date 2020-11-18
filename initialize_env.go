@@ -7,7 +7,8 @@ import (
 
 var isFetched bool = false
 
-func initializeEnv() error {
+// InitializeEnv method for initializing .env
+func InitializeEnv() error {
 	if !isFetched {
 		log.Println("Fetching variables from .env file for the first time.")
 		err := godotenv.Load()

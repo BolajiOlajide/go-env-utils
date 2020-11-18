@@ -7,10 +7,12 @@ import (
 
 // GetEnvVar get the environment variables for the user
 func GetEnvVar(key string, options Options) string {
-	err := initializeEnv()
+	if !isFetched {
+		err := InitializeEnv()
 
-	if err != nil {
-		log.Fatalf("An error occurred loading the .env file. \n%s\n", err)
+		if err != nil {
+			log.Fatalf("An error occurred loading the .env file. \n%s\n", err)
+		}
 	}
 
 	environment := os.Getenv("ENVIRONMENT")
